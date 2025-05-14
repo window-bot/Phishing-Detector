@@ -2,7 +2,8 @@
 
 A powerful Chrome browser extension with a FastAPI backend and web dashboard that detects and logs phishing or suspicious URLs in real-time.
 
-![Screenshot](https://raw.githubusercontent.com/window-bot/Phishing-Detector/main/extension_screenshot.png)
+![Demo](demo.png)
+
 
 ---
 

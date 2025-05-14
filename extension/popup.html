@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      width: 300px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #222;
+    }
+
+    #urlDisplay {
+      font-size: 14px;
+      margin: 10px 0;
+      color: #555;
+      word-break: break-all;
+    }
+
+    #checkBtn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    #checkBtn:hover {
+      background-color: #0056b3;
+    }
+
+    #loader {
+      display: none;
+      margin: 10px 0;
+    }
+
+    #resultCard {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .safe {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .phishing {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .link {
+      color: #007bff;
+      text-decoration: underline;
+      margin-top: 8px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .note {
+      color: orange;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <h3>Phishing Detector</h3>
+  <div id="urlDisplay">Loading...</div>
+  <button id="checkBtn">Check This Site</button>
+  <div id="loader">🔄 Scanning...</div>
+  <div id="resultCard"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

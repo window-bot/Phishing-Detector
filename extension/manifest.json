@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Detector",
+  "version": "1.0",
+  "description": "Detects phishing URLs.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "permissions": ["tabs"],
+  "host_permissions": ["<all_urls>"]
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishing Detection Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .dark {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+    }
+    .light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+    }
+    #controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+    #searchInput {
+      padding: 6px;
+      width: 50%;
+    }
+  </style>
+</head>
+<body class="light">
+  <div id="controls">
+    <input type="text" id="searchInput" placeholder="Search URL or result...">
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>URL</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="logTable">
+      {% for row in logs %}
+      <tr>
+        <td>{{ row.timestamp }}</td>
+        <td>{{ row.url }}</td>
+        <td>{{ row.result }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    // Load theme from localStorage
+    document.body.className = localStorage.getItem("theme") || "light";
+
+    function toggleTheme() {
+      const current = document.body.className;
+      const newTheme = current === "light" ? "dark" : "light";
+      document.body.className = newTheme;
+      localStorage.setItem("theme", newTheme);
+    }
+
+    // Filter functionality
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function () {
+      const search = this.value.toLowerCase();
+      const rows = document.querySelectorAll("#logTable tr");
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(search) ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
